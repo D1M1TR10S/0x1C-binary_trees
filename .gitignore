@@ -1,0 +1,19 @@
+# Ignore All
+*
+
+# Unignore All with "." Extensions
+!*.*
+
+# Unignore All Directories
+!*/
+
+# Ignore  __pycache__
+**pycache*
+
+# Ignore main files
+**/*main.c
+**/*main.py
+
+# Ignore _putchar.c and a.out
+**/_putchar.c
+**/a.out
