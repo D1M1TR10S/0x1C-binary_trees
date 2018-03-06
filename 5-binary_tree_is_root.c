@@ -3,14 +3,14 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_is_leaf - Tells user if a node is a leaf
+ * binary_tree_is_root - Tells user if a node is a root
  * @node: Node to be tested
  * Return: 0 on failure and 1 on success
  */
 
-int binary_tree_is_leaf(const binary_tree_t *node)
+int binary_tree_is_root(const binary_tree_t *node)
 {
-        if (node == NULL || node->left != NULL || node->right != NULL)
+        if (node == NULL || node->parent != NULL)
                 return (0);
         return (1);
 }
