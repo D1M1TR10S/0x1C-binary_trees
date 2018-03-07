@@ -3,9 +3,9 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_balance - Return the difference between the left and right sides
+ * binary_tree_is_full - Checks if a binary tree is full
  * @tree: Pointer to root node
- * Return: Number of balance with a child
+ * Return: 1 if full, else return 0
  */
 
 int binary_tree_is_full(const binary_tree_t *tree)
