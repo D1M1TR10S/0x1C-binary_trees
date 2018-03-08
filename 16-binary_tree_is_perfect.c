@@ -11,10 +11,10 @@
 
 int powpow(int base, size_t power)
 {
-    if (power > 0)
-        return (base * powpow(base, power - 1));
-    else
-        return (1);
+	if (power > 0)
+		return (base * powpow(base, power - 1));
+	else
+		return (1);
 }
 
 /**
@@ -26,6 +26,7 @@ int powpow(int base, size_t power)
 size_t binary_tree_height(const binary_tree_t *tree)
 {
 	size_t l_height, r_height;
+
 	if ((tree == NULL) || (tree->left == NULL && tree->right == NULL))
 		return (0);
 
@@ -45,13 +46,13 @@ size_t binary_tree_height(const binary_tree_t *tree)
 
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-        if (tree == NULL)
-                return (0);
+	if (tree == NULL)
+		return (0);
 
-        if (tree->left == NULL && tree->right == NULL)
-                return (1);
+	if (tree->left == NULL && tree->right == NULL)
+		return (1);
 
-        return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
+	return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
 }
 
 /**
