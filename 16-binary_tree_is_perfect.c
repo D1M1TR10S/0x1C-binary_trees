@@ -3,6 +3,21 @@
 #include "binary_trees.h"
 
 /**
+ * powpow - Power function
+ * @base: Number being powered
+ * @power: Number being raised to
+ * Return: Result
+ */
+
+int powpow(int base, size_t power)
+{
+    if (power > 0)
+        return (base * powpow(base, power - 1));
+    else
+        return (1);
+}
+
+/**
  * binary_tree_height - Return the height of node in a binary tree
  * @tree: Pointer to node
  * Return: 0 on failure and 1 on success
@@ -23,31 +38,20 @@ size_t binary_tree_height(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_is_full - Checks if a binary tree is full
+ * binary_tree_size - Return the size of a binary tree
  * @tree: Pointer to root node
- * Return: 1 if full, else return 0
+ * Return: 0 on failure and 1 on success
  */
 
-int binary_tree_is_full(const binary_tree_t *tree)
+size_t binary_tree_size(const binary_tree_t *tree)
 {
-	int left, right;
+        if (tree == NULL)
+                return (0);
 
-	if (tree == NULL)
-		return (0);
-	if (tree->left == NULL && tree->right == NULL)
-		return (1);
-	if (tree->left == NULL && tree->right != NULL)
-		return (0);
-	if (tree->left != NULL && tree->right == NULL)
-		return (0);
+        if (tree->left == NULL && tree->right == NULL)
+                return (1);
 
-	left = binary_tree_is_full(tree->left);
-	right = binary_tree_is_full(tree->right);
-
-	if (left == 0 || right == 0)
-		return (0);
-	else
-		return (1);
+        return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
 }
 
 /**
@@ -58,16 +62,22 @@ int binary_tree_is_full(const binary_tree_t *tree)
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int left, right;
+	int height, size;
+	int sum = 0;
 
-	if (tree == NULL) 
+	if (tree == NULL)
 		return (0);
 
-	binary_tree_is_perfect(tree->left);
-	binary_tree_is_perfect(tree->right);
+	size = binary_tree_size(tree);
+	height = binary_tree_height(tree);
 
-	if (binary_tree_height(tree->left) != binary_tree_height(tree->right))
+	while (height >= 0)
+	{
+		sum += powpow(2, height);
+		height--;
+	}
+	if (sum == size)
+		return (1);
+	else
 		return (0);
-
-	return (binary_tree_is_full(tree));
 }
