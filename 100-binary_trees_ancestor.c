@@ -30,10 +30,11 @@ size_t binary_tree_depth(const binary_tree_t *node)
  * Return: Pointer to lowest common ancestor
  */
 
-binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second)
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+const binary_tree_t *second)
 {
-	binary_tree_t *node_1 = (void *)first;
-	binary_tree_t *node_2 = (void *)second;
+	binary_tree_t *node_1 = (binary_tree_t *)first;
+	binary_tree_t *node_2 = (binary_tree_t *)second;
 	size_t first_dep;
 	size_t second_dep;
 
